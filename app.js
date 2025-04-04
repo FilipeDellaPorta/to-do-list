@@ -24,10 +24,10 @@ function salvarNaLocalStorage(tarefaASerSalva) {
   }
   localStorage.setItem('tarefas', JSON.stringify(tarefasSalvas));
 
-  imprimeListaDaLocalStorage(tarefasSalvas);
+  imprimirListaDaLocalStorage(tarefasSalvas);
 }
 
-function imprimeListaDaLocalStorage(tarefasASeremImpressas) {
+function imprimirListaDaLocalStorage(tarefasASeremImpressas) {
   const lista = document.getElementById('lista-tarefas');
   lista.innerHTML = '';
   tarefasASeremImpressas.forEach((tarefa) => {
