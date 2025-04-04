@@ -1,4 +1,4 @@
-function adicionar() {
+function adicionarTarefa() {
   const tarefaInputada = document.getElementById('nova-tarefa');
 
   if (tarefaInputada instanceof HTMLInputElement) {
@@ -11,23 +11,26 @@ function adicionar() {
       return;
     }
 
-    gerenciarLocalStorage(tarefaInputada.value);
+    salvarNaLocalStorage(tarefaInputada.value);
 
     tarefaInputada.value = '';
   }
 }
 
-function gerenciarLocalStorage(tarefaASerSalva) {
-  const lista = document.getElementById('lista-tarefas');
-
+function salvarNaLocalStorage(tarefaASerSalva) {
   const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
   if (tarefasSalvas instanceof Array) {
     tarefasSalvas.push(tarefaASerSalva);
   }
   localStorage.setItem('tarefas', JSON.stringify(tarefasSalvas));
 
+  imprimeListaDaLocalStorage(tarefasSalvas);
+}
+
+function imprimeListaDaLocalStorage(tarefasASeremImpressas) {
+  const lista = document.getElementById('lista-tarefas');
   lista.innerHTML = '';
-  tarefasSalvas.forEach((tarefa) => {
+  tarefasASeremImpressas.forEach((tarefa) => {
     const novaTarefa = document.createElement('li');
     novaTarefa.classList.add('principal__lista__item');
     novaTarefa.textContent = tarefa;
@@ -36,7 +39,7 @@ function gerenciarLocalStorage(tarefaASerSalva) {
   });
 }
 
-function limpar() {
+function limparListaDeTarefas() {
   const lista = document.getElementById('lista-tarefas');
   if (lista instanceof HTMLElement) {
     lista.innerHTML = '';
