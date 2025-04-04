@@ -62,3 +62,10 @@ function mostrarErro(mensagem) {
     }, 500);
   }, 1500);
 }
+
+window.onload = () => {
+  const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
+  if (tarefasSalvas instanceof Array) {
+    imprimirListaDaLocalStorage(tarefasSalvas);
+  }
+};
