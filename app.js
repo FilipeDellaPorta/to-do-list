@@ -10,25 +10,30 @@ function adicionar() {
       mostrarErro('A tarefa deve ter no máximo 50 caracteres.');
       return;
     }
-    const lista = document.getElementById('lista-tarefas');
 
-    const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
-    if (tarefasSalvas instanceof Array) {
-      tarefasSalvas.push(tarefaInputada.value);
-    }
-    localStorage.setItem('tarefas', JSON.stringify(tarefasSalvas));
-
-    lista.innerHTML = '';
-    tarefasSalvas.forEach((tarefa) => {
-      const novaTarefa = document.createElement('li');
-      novaTarefa.classList.add('principal__lista__item');
-      novaTarefa.textContent = tarefa;
-
-      lista.appendChild(novaTarefa);
-    });
+    gerenciarLocalStorage(tarefaInputada.value);
 
     tarefaInputada.value = '';
   }
+}
+
+function gerenciarLocalStorage(tarefaASerSalva) {
+  const lista = document.getElementById('lista-tarefas');
+
+  const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
+  if (tarefasSalvas instanceof Array) {
+    tarefasSalvas.push(tarefaASerSalva);
+  }
+  localStorage.setItem('tarefas', JSON.stringify(tarefasSalvas));
+
+  lista.innerHTML = '';
+  tarefasSalvas.forEach((tarefa) => {
+    const novaTarefa = document.createElement('li');
+    novaTarefa.classList.add('principal__lista__item');
+    novaTarefa.textContent = tarefa;
+
+    lista.appendChild(novaTarefa);
+  });
 }
 
 function limpar() {
