@@ -54,7 +54,9 @@ body {
     font-size: 16px;
 }
 
-.principal__botoes__botao:hover {
+.principal__botoes__botao:hover,
+.botao-editar:hover,
+.botao-deletar:hover {
     background-color: #e0138c;
     border: solid 1px #e0138c;
     transform: scale(1.03);
@@ -66,6 +68,23 @@ body {
     flex-direction: column;
     gap: 16px;
     list-style: none;
+}
+
+.principal__lista__item {
+    display: flex;
+    gap: 16px;
+}
+
+.botao-editar,
+.botao-deletar {
+    width: 48px;
+    height: 24px;
+    border: solid 1px #2113e0;
+    border-radius: 20px;
+    color: white;
+    background-color: #2113e0;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .rodape {
