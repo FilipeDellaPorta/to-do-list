@@ -13,7 +13,9 @@ body {
     min-height: 100vh;
     align-items: center;
     gap: 32px;
-    background-color: black;
+    background-color: #121212;
+    background-image: radial-gradient(#444 1px, transparent 1px);
+    background-size: 20px 20px;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
