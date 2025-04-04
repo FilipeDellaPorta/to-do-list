@@ -64,8 +64,13 @@ function mostrarErro(mensagem) {
 }
 
 window.onload = () => {
-  const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
-  if (tarefasSalvas instanceof Array) {
-    imprimirListaDaLocalStorage(tarefasSalvas);
+  try {
+    const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
+    if (tarefasSalvas instanceof Array) {
+      imprimirListaDaLocalStorage(tarefasSalvas);
+    }
+  } catch (error) {
+    console.error('Erro ao recuperar tarefas:', error);
+    localStorage.removeItem('tarefas');
   }
 };
