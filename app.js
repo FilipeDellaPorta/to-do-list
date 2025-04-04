@@ -17,34 +17,67 @@ function adicionarTarefa() {
   }
 }
 
-function salvarNaLocalStorage(tarefaASerSalva) {
-  const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
-  if (tarefasSalvas instanceof Array) {
-    tarefasSalvas.push(tarefaASerSalva);
-  }
-  localStorage.setItem('tarefas', JSON.stringify(tarefasSalvas));
-
-  imprimirListaDaLocalStorage(tarefasSalvas);
-}
-
 function imprimirListaDaLocalStorage(tarefasASeremImpressas) {
-  const lista = document.getElementById('lista-tarefas');
-  lista.innerHTML = '';
-  tarefasASeremImpressas.forEach((tarefa) => {
+  const lista = limparListaDaTela();
+  tarefasASeremImpressas.forEach((tarefa, index) => {
     const novaTarefa = document.createElement('li');
     novaTarefa.classList.add('principal__lista__item');
     novaTarefa.textContent = tarefa;
 
     lista.appendChild(novaTarefa);
+
+    const botaoEditar = document.createElement('button');
+    botaoEditar.classList.add('botao-editar');
+    botaoEditar.textContent = '✏️';
+    botaoEditar.setAttribute('aria-label', 'Editar tarefa');
+    novaTarefa.appendChild(botaoEditar);
+
+    const botaoDeletar = document.createElement('button');
+    botaoDeletar.classList.add('botao-deletar');
+    botaoDeletar.textContent = '🗑️';
+    botaoDeletar.setAttribute('aria-label', 'Deletar tarefa');
+    novaTarefa.appendChild(botaoDeletar);
+
+    botaoDeletar.addEventListener('click', () => {
+      deletarTarefaDaLocalStorage(index);
+    });
   });
 }
 
-function limparListaDeTarefas() {
-  const lista = document.getElementById('lista-tarefas');
-  if (lista instanceof HTMLElement) {
-    lista.innerHTML = '';
+function obterTarefas() {
+  const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
+  if (!(tarefasSalvas instanceof Array)) {
+    return;
   }
+  return tarefasSalvas;
+}
+
+function salvarNaLocalStorage(tarefaASerSalva) {
+  const tarefas = obterTarefas();
+  tarefas.push(tarefaASerSalva);
+  localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  imprimirListaDaLocalStorage(tarefas);
+}
+
+function deletarTarefaDaLocalStorage(index) {
+  const tarefas = obterTarefas();
+  tarefas.splice(index, 1);
+  localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  imprimirListaDaLocalStorage(tarefas);
+}
+
+function limparListaDeTarefas() {
+  limparListaDaTela();
   localStorage.removeItem('tarefas');
+}
+
+function limparListaDaTela() {
+  const lista = document.getElementById('lista-tarefas');
+  if (!(lista instanceof HTMLElement)) {
+    return;
+  }
+  lista.innerHTML = '';
+  return lista;
 }
 
 function mostrarErro(mensagem) {
@@ -65,10 +98,8 @@ function mostrarErro(mensagem) {
 
 window.onload = () => {
   try {
-    const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
-    if (tarefasSalvas instanceof Array) {
-      imprimirListaDaLocalStorage(tarefasSalvas);
-    }
+    const tarefas = obterTarefas();
+    imprimirListaDaLocalStorage(tarefas);
   } catch (error) {
     console.error('Erro ao recuperar tarefas:', error);
     localStorage.removeItem('tarefas');
