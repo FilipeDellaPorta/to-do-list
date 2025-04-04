@@ -12,11 +12,21 @@ function adicionar() {
     }
     const lista = document.getElementById('lista-tarefas');
 
-    const novaTarefa = document.createElement('li');
-    novaTarefa.classList.add('principal__lista__item');
-    novaTarefa.textContent = tarefaInputada.value;
+    const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
+    if (tarefasSalvas instanceof Array) {
+      tarefasSalvas.push(tarefaInputada.value);
+    }
+    localStorage.setItem('tarefas', JSON.stringify(tarefasSalvas));
 
-    lista.appendChild(novaTarefa);
+    lista.innerHTML = '';
+    tarefasSalvas.forEach((tarefa) => {
+      const novaTarefa = document.createElement('li');
+      novaTarefa.classList.add('principal__lista__item');
+      novaTarefa.textContent = tarefa;
+
+      lista.appendChild(novaTarefa);
+    });
+
     tarefaInputada.value = '';
   }
 }
@@ -26,20 +36,21 @@ function limpar() {
   if (lista instanceof HTMLElement) {
     lista.innerHTML = '';
   }
+  localStorage.removeItem('tarefas');
 }
 
 function mostrarErro(mensagem) {
-    const erroDiv = document.getElementById('erro-tarefa');
-    erroDiv.textContent = mensagem;
-    erroDiv.style.display = 'block';
-    erroDiv.classList.remove('fade');
-  
+  const erroDiv = document.getElementById('erro-tarefa');
+  erroDiv.textContent = mensagem;
+  erroDiv.style.display = 'block';
+  erroDiv.classList.remove('fade');
+
+  setTimeout(() => {
+    erroDiv.classList.add('fade');
     setTimeout(() => {
-      erroDiv.classList.add('fade');
-      setTimeout(() => {
-        erroDiv.textContent = '';
-        erroDiv.classList.remove('fade');
-        erroDiv.style.display = 'none';
-      }, 500);
-    }, 1500);
-  }
+      erroDiv.textContent = '';
+      erroDiv.classList.remove('fade');
+      erroDiv.style.display = 'none';
+    }, 500);
+  }, 1500);
+}
