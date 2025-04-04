@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    min-height: 100vh;
+    align-items: center;
+    gap: 32px;
+    background-color: black;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.cabecalho {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    flex: 1;
+}
+
+.principal__botoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.principal__botoes__botao {
+    width: 160px;
+    height: 48px;
+    border: solid 1px #2113e0;
+    border-radius: 20px;
+    color: white;
+    background-color: #2113e0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.principal__botoes__botao:hover {
+    background-color: #e0138c;
+    border: solid 1px #e0138c;
+    transform: scale(1.03);
+    transition: all 0.2s ease-in-out;
+}
+
+.principal__lista {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: 100vw;
+    background-color: #e0138c;
+}
+
+.mensagem-erro {
+    display: none;
+    background-color: #ffccd5;
+    color: #a00028;
+    font-weight: bold;
+    padding: 12px 20px;
+    margin: 20px auto;
+    border: 2px solid #a00028;
+    border-radius: 8px;
+    width: fit-content;
+    max-width: 80%;
+    text-align: center;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.mensagem-erro.fade {
+    opacity: 0;
+}
+
+/* https://johnywalves.com.br/input-estilizado/ */
+
+.principal__form {
+    overflow: hidden;
+    position: relative;
+    width: 80%;
+    border-radius: 4px;
+}
+
+.principal__form__input {
+    color: #fff;
+    font-size: 28px;
+    width: 100%;
+    padding: 20px 5px 5px;
+    background-color: #4f4f4f;
+    border: none;
+    border-radius: 4px;
+}
+
+.principal__form__label {
+    color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid #ffffff;
+}
+
+.principal__form__span {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+.principal__form__label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid #2113e0;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+
+.principal__form__input:focus+.principal__form__label .principal__form__span,
+.principal__form__input:valid+.principal__form__label .principal__form__span {
+    transform: translateY(-150%);
+    font-size: 14px;
+    bottom: 10px;
+    color: #2113e0;
+}
+
+.principal__form__input:focus+.principal__form__label::after,
+.principal__form__input:valid+.principal__form__label::after {
+    transform: translateX(0%);
+}

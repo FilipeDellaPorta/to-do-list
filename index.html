@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To-Do List</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1>Minha lista de tarefas:</h1>
+    </header>
+    <main class="principal">
+        <form class="principal__form">
+            <input class="principal__form__input" type="text" id="nova-tarefa" name="Digite uma nova tarefa" autocomplete="off" required>
+            <label for="nova-tarefa" class="principal__form__label">
+                <span class="principal__form__span">Digite uma nova tarefa</span>
+            </label>
+        </form>
+        <div id="erro-tarefa" class="mensagem-erro"></div>
+        <div class="principal__botoes">
+            <button class="principal__botoes__botao" id="btn-adicionar" onclick="adicionar()">Adicionar</button>
+            <button class="principal__botoes__botao" id="btn-limpar" onclick="limpar()">Limpar</button>
+        </div>
+        <ul class="principal__lista" id="lista-tarefas">
+        </ul>
+    </main>
+    <footer class="rodape">
+        <p>Feito por Filipe Della Porta</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
