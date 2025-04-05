@@ -27,9 +27,13 @@ Permite adicionar, editar e excluir tarefas, com persistência de dados usando o
    ```bash
    git clone https://github.com/FilipeDellaPorta/to-do-list.git
    
-2. Acesse a pasta do projeto: cd to-do-list
+2. Acesse a pasta do projeto:
+   ```bash
+   cd to-do-list
 
-3. Abra o arquivo index.html no seu navegador preferido. 💡 Não é necessário servidor nem instalação de dependências.
+3. Abra o arquivo index.html no seu navegador preferido.
+   ```bash
+   💡 Não é necessário servidor nem instalação de dependências.
 
 <pre lang="markdown"> ## 📁 Estrutura do Projeto 
 
