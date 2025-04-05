@@ -18,7 +18,7 @@ function adicionarTarefa() {
 }
 
 function imprimirListaDaLocalStorage(tarefasASeremImpressas) {
-  const lista = limparListaDaTela();
+  const lista = recuperarELimparListaDaTela();
   tarefasASeremImpressas.forEach((tarefa, index) => {
     const novaTarefa = document.createElement('li');
     novaTarefa.classList.add('principal__lista__item');
@@ -41,6 +41,13 @@ function imprimirListaDaLocalStorage(tarefasASeremImpressas) {
     botaoDeletar.addEventListener('click', () => {
       deletarTarefaDaLocalStorage(index);
     });
+
+    botaoEditar.addEventListener('click', () => {
+      const tarefaAtualizada = prompt('Edite a sua tarefa: ', tarefa);
+      if (tarefaAtualizada && tarefaAtualizada.trim() !== '') {
+        editarTarefaDaLocalStorage(index, tarefaAtualizada.trim());
+      }
+    });
   });
 }
 
@@ -52,26 +59,35 @@ function obterTarefas() {
   return tarefasSalvas;
 }
 
+function armazenarTarefasAposCrud(tarefasAposCrud) {
+  localStorage.setItem('tarefas', JSON.stringify(tarefasAposCrud));
+  imprimirListaDaLocalStorage(tarefasAposCrud);
+}
+
 function salvarNaLocalStorage(tarefaASerSalva) {
   const tarefas = obterTarefas();
   tarefas.push(tarefaASerSalva);
-  localStorage.setItem('tarefas', JSON.stringify(tarefas));
-  imprimirListaDaLocalStorage(tarefas);
+  armazenarTarefasAposCrud(tarefas);
 }
 
 function deletarTarefaDaLocalStorage(index) {
   const tarefas = obterTarefas();
   tarefas.splice(index, 1);
-  localStorage.setItem('tarefas', JSON.stringify(tarefas));
-  imprimirListaDaLocalStorage(tarefas);
+  armazenarTarefasAposCrud(tarefas);
+}
+
+function editarTarefaDaLocalStorage(index, tarefaAtualizada) {
+  const tarefas = obterTarefas();
+  tarefas[index] = tarefaAtualizada;
+  armazenarTarefasAposCrud(tarefas);
 }
 
 function limparListaDeTarefas() {
-  limparListaDaTela();
+  recuperarELimparListaDaTela();
   localStorage.removeItem('tarefas');
 }
 
-function limparListaDaTela() {
+function recuperarELimparListaDaTela() {
   const lista = document.getElementById('lista-tarefas');
   if (!(lista instanceof HTMLElement)) {
     return;
