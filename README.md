@@ -31,18 +31,15 @@ Permite adicionar, editar e excluir tarefas, com persistência de dados usando o
    ```bash
    cd to-do-list
 
-3. Abra o arquivo index.html no seu navegador preferido.
-   ```bash
-   💡 Não é necessário servidor nem instalação de dependências.
+3. Abra o arquivo index.html no seu navegador preferido. 💡 Não é necessário servidor nem instalação de dependências.
 
-<pre lang="markdown"> ## 📁 Estrutura do Projeto 
+## 📁 Estrutura do Projeto 
 
 to-do-list/
 ├── index.html
 ├── style.css
 └── script.js
 
-</pre>
 
 🙌 Sobre o Projeto
 Este projeto foi desenvolvido como parte dos meus estudos em JavaScript, com foco em manipulação de DOM, persistência de dados no navegador e boas práticas de acessibilidade.
