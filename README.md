@@ -31,11 +31,7 @@ Permite adicionar, editar e excluir tarefas, com persistência de dados usando o
 
 3. Abra o arquivo index.html no seu navegador preferido. 💡 Não é necessário servidor nem instalação de dependências.
 
-📁 Estrutura do Projeto
-to-do-list/
-├── index.html
-├── style.css
-└── script.js
+<pre lang="markdown"> ## 📁 Estrutura do Projeto ``` to-do-list/ ├── index.html ├── style.css └── script.js ``` </pre>
 
 🙌 Sobre o Projeto
 Este projeto foi desenvolvido como parte dos meus estudos em JavaScript, com foco em manipulação de DOM, persistência de dados no navegador e boas práticas de acessibilidade.
