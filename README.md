@@ -32,7 +32,12 @@ Permite adicionar, editar e excluir tarefas, com persistência de dados usando o
 3. Abra o arquivo index.html no seu navegador preferido. 💡 Não é necessário servidor nem instalação de dependências.
 
 <pre lang="markdown"> ## 📁 Estrutura do Projeto 
-   ``` to-do-list/ ├── index.html ├── style.css └── script.js ``` 
+   ```
+to-do-list/
+├── index.html
+├── style.css
+└── script.js
+   ``` 
 </pre>
 
 🙌 Sobre o Projeto
