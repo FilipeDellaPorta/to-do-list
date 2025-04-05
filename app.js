@@ -46,6 +46,8 @@ function imprimirListaDaLocalStorage(tarefasASeremImpressas) {
       const tarefaAtualizada = prompt('Edite a sua tarefa: ', tarefa);
       if (tarefaAtualizada && tarefaAtualizada.trim() !== '') {
         editarTarefaDaLocalStorage(index, tarefaAtualizada.trim());
+      } else {
+        alert('Tarefa em branco. Nomeie a tarefa.');
       }
     });
   });
