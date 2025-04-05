@@ -42,5 +42,6 @@ to-do-list/
 └── script.js
 ```
 
-🙌 Sobre o Projeto
+## 🙌 Sobre o Projeto
+
 Este projeto foi desenvolvido como parte dos meus estudos em JavaScript, com foco em manipulação de DOM, persistência de dados no navegador e boas práticas de acessibilidade.
