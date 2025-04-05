@@ -35,11 +35,12 @@ Permite adicionar, editar e excluir tarefas, com persistência de dados usando o
 
 ## 📁 Estrutura do Projeto 
 
+```
 to-do-list/
 ├── index.html
 ├── style.css
 └── script.js
-
+```
 
 🙌 Sobre o Projeto
 Este projeto foi desenvolvido como parte dos meus estudos em JavaScript, com foco em manipulação de DOM, persistência de dados no navegador e boas práticas de acessibilidade.
